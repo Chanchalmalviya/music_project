@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Song</title>
+</head>
+<body>
+    <h1>Update Song</h1>
+    <form action = "/update_song/" method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="hidden" name="pk" value="{{song.id}}" >
+        <input type="text" name="title" value="{{song.title}}" required><br>
+        <label for="artist">Artist:</label>
+        <input type="text" name="artist" value="{{song.artist}}" required><br>
+        <label for="album">Album:</label>
+        <input type="text" name="album" value="{{song.album}}" required><br>
+        <label for="file">File:</label>
+        <input type="file" name="file" required><br>
+        <input type="submit" value="Update Song">
+    </form>
+    <a href="{% url 'song_list' %}">Back to Song List</a>
+</body>
+</html>

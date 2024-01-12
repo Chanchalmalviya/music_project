@@ -1,0 +1,27 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song List</title>
+</head>
+<body>
+    <h1>Song List</h1>
+    <ul>
+        {% for songs in song %}
+            <li>
+                {{songs.tittle}} {{songs.artist}} {{songs.album}} {{songs.file}}
+                <a href="/play/{{songs.id}}/">Play</a>
+                <a href="/update/{{songs.id}}/">Update</a>
+                <a href="/delete/{{songs.id}}/">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_song' %}">Add a new song</a>
+</body>
+</html>
+
+{% endblock content  %}
